@@ -98,4 +98,20 @@ describe("AdjacencyList", () => {
       expect(result).toEqual([2, 3, 1]);
     });
   });
+
+  describe("#bfs", () => {
+    it("returns edges from a start point", () => {
+      const adjacencyList = new AdjacencyList();
+      adjacencyList.addNode(1);
+      adjacencyList.addNode(2);
+      adjacencyList.addNode(3);
+
+      adjacencyList.addEdge(1, 3);
+      adjacencyList.addEdge(2, 3);
+
+      const result = adjacencyList.bfs(2);
+
+      expect(result).toEqual([2, 3, 1]);
+    });
+  });
 });

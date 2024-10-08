@@ -48,6 +48,28 @@ class AdjacencyList {
 
     return result;
   }
+
+  bfs(start) {
+    const queue = [start];
+    const result = [];
+    const visited = {};
+
+    visited[start] = true;
+
+    while (queue.length) {
+      let node = queue.shift();
+      result.push(node);
+
+      this.list[node].forEach((neighbor) => {
+        if (!visited[neighbor]) {
+          visited[neighbor] = true;
+          queue.push(neighbor);
+        }
+      });
+    }
+
+    return result;
+  }
 }
 
 module.exports = AdjacencyList;
