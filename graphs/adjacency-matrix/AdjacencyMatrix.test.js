@@ -1,4 +1,4 @@
-const AdjacencyMatrix = require("./AjacencyMatrix");
+const AdjacencyMatrix = require("./AdjacencyMatrix");
 
 describe("AdjacencyMatrix", () => {
   describe("#new", () => {
