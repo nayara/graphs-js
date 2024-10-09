@@ -1,3 +1,4 @@
+const traversal = require("../traversal-helpers/traversal");
 const AdjacencyMatrix = require("./AdjacencyMatrix");
 
 describe("AdjacencyMatrix", () => {
@@ -60,6 +61,30 @@ describe("AdjacencyMatrix", () => {
 
       expect(expectedEdge).toBeTruthy();
       expect(notExpectedEdge).toBeFalsy();
+    });
+  });
+
+  describe("#dfs", () => {
+    it("returns edges from a start point", () => {
+      const adjacencyMatrix = new AdjacencyMatrix(3);
+      adjacencyMatrix.addEdge(1, 2);
+      adjacencyMatrix.addEdge(0, 1);
+
+      const result = traversal.dfs(2, adjacencyMatrix.matrix);
+
+      expect(result).toEqual([2, 1]);
+    });
+  });
+
+  describe("#bfs", () => {
+    it("returns edges from a start point", () => {
+      const adjacencyMatrix = new AdjacencyMatrix(3);
+      adjacencyMatrix.addEdge(1, 2);
+      adjacencyMatrix.addEdge(0, 1);
+
+      const result = traversal.bfs(2, adjacencyMatrix.matrix);
+
+      expect(result).toEqual([2, 0, 1]);
     });
   });
 });
