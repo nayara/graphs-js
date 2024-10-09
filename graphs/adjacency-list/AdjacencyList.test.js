@@ -1,3 +1,4 @@
+const traversal = require("../traversal-helpers/traversal");
 const AdjacencyList = require("./AdjacencyList");
 
 describe("AdjacencyList", () => {
@@ -93,7 +94,7 @@ describe("AdjacencyList", () => {
       adjacencyList.addEdge(1, 3);
       adjacencyList.addEdge(2, 3);
 
-      const result = adjacencyList.dfs(2);
+      const result = traversal.dfs(2, adjacencyList.list);
 
       expect(result).toEqual([2, 3, 1]);
     });
@@ -109,7 +110,7 @@ describe("AdjacencyList", () => {
       adjacencyList.addEdge(1, 3);
       adjacencyList.addEdge(2, 3);
 
-      const result = adjacencyList.bfs(2);
+      const result = traversal.bfs(2, adjacencyList.list);
 
       expect(result).toEqual([2, 3, 1]);
     });

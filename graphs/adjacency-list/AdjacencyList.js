@@ -27,49 +27,6 @@ class AdjacencyList {
   isEdge(fromNode, toNode) {
     return this.list[fromNode].includes(toNode);
   }
-
-  dfs(start) {
-    const result = [];
-    const visited = {};
-    const list = this.list;
-
-    (function dfsHelper(node) {
-      if (!node) return null;
-
-      visited[node] = true;
-      result.push(node);
-
-      list[node].forEach((neighbor) => {
-        if (!visited[neighbor]) {
-          dfsHelper(neighbor);
-        }
-      });
-    })(start);
-
-    return result;
-  }
-
-  bfs(start) {
-    const queue = [start];
-    const result = [];
-    const visited = {};
-
-    visited[start] = true;
-
-    while (queue.length) {
-      let node = queue.shift();
-      result.push(node);
-
-      this.list[node].forEach((neighbor) => {
-        if (!visited[neighbor]) {
-          visited[neighbor] = true;
-          queue.push(neighbor);
-        }
-      });
-    }
-
-    return result;
-  }
 }
 
 module.exports = AdjacencyList;
